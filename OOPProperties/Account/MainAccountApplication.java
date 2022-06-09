@@ -25,6 +25,7 @@ class MainAccountApplication {
 
         }
         obj.Accept();
+        obj.Interest_Calc();
         obj.Display();
     }
 }
