@@ -17,19 +17,37 @@ class Retire extends Employee {
         years = sc.nextInt();
     }
 
-    Retire(double basic, int years) {
-        super();
-        this.basic = basic;
-        this.years = years;
+   import java.util.*;
+class Retire extends Salary  //Multi-level Inheritance
+{
+    int years, pf, grat;
+        
+    Retire(int num, String nm, String desig, int basic, int years)
+    {
+       super(num,nm,desig,basic);
+       this.years=years;
     }
-
-    void calculator() {
-        pf = (2 / 100) * basic * years;
-        if (years >= 10)
-            grat = basic;
+ 
+    void calculator()
+    {
+        pf=(int)((2.0/100)*basic*12*years);
+        if (years>=10)
+            grat=basic*12;
         else
-            grat = 0;
+            grat=0;
     }
+ 
+    void display()
+    {
+        super.calculator();
+        super.display();
+        System.out.println("Retirement Benefits");
+        System.out.println("===================");
+        System.out.println("PF= "+pf);
+        System.out.println("Gratuity= "+grat);
+    }
+}
+ 
 
     void display() {
         super.display();
