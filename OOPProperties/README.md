@@ -1,4 +1,4 @@
-OOPProperties:
+# OOPProperties:
 
 This folder consists of codes that attempted to encompass the 4 basic Object-Oriented Programming properties:
 1. Polymorphism
