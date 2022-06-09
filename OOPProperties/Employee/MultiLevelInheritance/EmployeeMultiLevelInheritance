@@ -1,0 +1,103 @@
+package Employee;
+/*Multi-level-inheritance */
+
+//main class
+
+import java.util.*;
+
+class EmployeeMultiLevelInheritance {
+    public static void main(String[] args) {
+        Scanner strsc = new Scanner(System.in);
+        Scanner sc = new Scanner(System.in);
+        int ch = 99;
+        Employee obj = null;
+
+        do {
+            System.out.println("Menu:");
+            System.out.println("1. Generate payslip \n2. Calculate Retirement Benefits \n3. Exit");
+            System.out.println("Make choice");
+            ch = sc.nextInt();
+
+            switch (ch) {
+                case 1:
+                    obj = new Salary(1001, "TOM", "MANAGER", 4500);
+                    break;
+                case 2:
+                    obj = new Retire(1101, "DICK", "ACCOUNTANT", 4500, 15);
+                    break;
+                case 3:
+                    System.exit(0);
+                    break;
+                default:
+                    System.out.println("Incorrect-Enter again");
+
+                    break;
+
+            }
+            obj.calculator();
+            obj.display();
+
+        } while (ch != 0);
+    }
+}
+// Salary
+
+class Salary extends Employee {
+    int basic;
+    int DA;
+    int HRA;
+    int Gross_salary;
+    int PF;
+    int Net_salary;
+
+    Salary(int num, String name, String desig, int pay) {
+        super(num, name, desig);
+        basic = pay;
+    }
+
+    void calculator() {
+        DA = 50 * basic / 100;
+        HRA = 15 * basic / 100;
+        Gross_salary = basic + DA + HRA;
+        PF = 8 * Gross_salary / 100;
+        Net_salary = Gross_salary - PF;
+    }
+
+    void display() {
+        super.display();
+        System.out.println("Basic = " + basic);
+        System.out.println("Dearness allowance = " + DA);
+        System.out.println("Gross salary= " + Gross_salary);
+        System.out.println("Monthly PF Deduction= " + PF);
+        System.out.println("Net Salary= " + Net_salary);
+    }
+}
+// Retire class
+
+class Retire extends Salary // Multi-level Inheritance
+{
+    int years, pf, grat;
+
+    Retire(int num, String nm, String desig, int basic, int years) {
+        super(num, nm, desig, basic);
+        this.years = years;
+    }
+
+    void calculator() {
+        pf = (int) ((2.0 / 100) * basic * 12 * years);
+        if (years >= 10)
+            grat = basic * 12;
+        else
+            grat = 0;
+    }
+
+    void display() {
+        super.calculator();
+        super.display();
+        System.out.println("Retirement Benefits");
+        System.out.println("===================");
+        System.out.println("PF= " + pf);
+        System.out.println("Gratuity= " + grat);
+    }
+}
+// Employee Class
