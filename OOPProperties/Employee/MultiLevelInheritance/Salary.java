@@ -17,8 +17,8 @@ class Salary extends Employee {
         basic = sc.nextInt();
     }
 
-    Salary(double pay) {
-        super();
+    Salary(int num, String name, String desig, int pay) {
+        super(num,name,desig);
         basic = pay;
     }
 
