@@ -7,6 +7,12 @@ public class Loan {
     DATE doc = null;
     int mobnum;
     String name;
+    
+    publc class Loan() {
+        DATE obj, doc;
+        int mobnum;
+        String name; 
+    }
 
     public void accept() {
         Scanner sc = new Scanner(System.in);
